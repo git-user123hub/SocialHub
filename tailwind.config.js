@@ -50,8 +50,6 @@ module.exports = {
         borderClr: "var(--color-slate-900)",
         lightBg: "var(--color-slate-200-55)",
         textPryClr: "var(--color-white-300)",
-        // srlBarTrack: "var(--color-scrollbar-track)",
-        // srlBarThumb: "var(--color-scrollbar-thumb)",
         secBtnBg: "var(--color-sec-btn)",
         secBtnBgHvr: "var(--color-sec-btn-hvr)",
         mainBlueBtn: "var(--color-blue-btn)",

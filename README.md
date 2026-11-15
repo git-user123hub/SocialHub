@@ -6,7 +6,9 @@ A full-stack social media application inspired by Instagram, built with **Next.j
 
 ## Live Demo
 
-- **Repository:** [https://github.com/git-user123hub/SocialHub]
+- **Live Application:** [social-hub-website](https://social-hub-website.vercel.app/)
+
+* **Repository:** [https://github.com/git-user123hub/SocialHub]
 
 ## Tech Stack
 
@@ -120,4 +122,6 @@ Here are the features planned for future updates:
 ## Acknowledgments
 
 - Built with [Next.js](https://nextjs.org) and [Supabase](https://supabase.com)
-- Icons provided by [Heroicons](https://heroicons.com/) _(swap with your actual icon library)_
+- Icons provided by [Heroicons](https://heroicons.com/)
+
+* Deployed on [Vercel](https://vercel.com)
