@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 16px !important;
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 14px !important; /* Forces mobile to drop to 14px */
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:root {
+  --extended-sidebar-width: 250px;
+  --my-grid-cols: 1fr 1fr 1fr 1fr;
+  --my-grid-test-cols: 1fr 1fr 1fr;
+  --my-post-grid-cols: 1.5fr 1fr;
+  --my-stretched-height: stretch;
+
+  --global-white: #ffffff;
+  --global-black: #0c1014;
+  --color-blue-btn: #4a5df9;
+  --color-blue-btn-hvr: #4150f7;
+
+  &.light {
+    --color-main-shadow: rgb(100 116 139 / 0.7);
+    --color-secondary-shadow: rgb(15 23 42 / 0.7);
+    --color-blue-500: #f8fafc;
+    --color-white: #ffffff;
+    --color-white-300: #5f5f5f;
+    --color-white-50: #f8fafc;
+    --color-grey: #0c1014;
+    --color-light-grey: #e5eaee;
+    --color-grey-50: #cbd5e1;
+    --color-slate-900: #0f172a;
+    --color-slate-200-55: #e2e8f08c;
+    --color-grey-5050: #a8abaf;
+    --color-scrollbar-track: #ffffff;
+    --color-scrollbar-thumb: #8b8b8b;
+    --color-scrollbar-hover: #676767;
+    --display-block: none;
+    --color-sec-btn: #f0f2f5;
+    --color-sec-btn-hvr: #e7eaee;
+    --post-menu-ini-top: #ffffff;
+    --post-menu-init-border-btm: #cbd5e1;
+    --post-menu-init-btm: #ffffff;
+    --post-menu-init-stroke: #1e293b;
+    --post-menu-init-txt: #e2e8f0;
+    --color-edit-acc: #f3f5f7;
+    --color-acc-submit-btn: #b8cdff;
+    --color-edit-acc-fullname: rgb(106, 113, 122);
+  }
+
+  &.dark {
+    --color-main-shadow: rgb(100 116 139 / 0.4);
+    --color-secondary-shadow: rgb(15 23 42 / 0.4);
+    --color-blue-500: #3b82f6;
+    --color-white: #0c1014;
+    --color-white-300: #a8a8a8;
+    --color-white-50: #292b2e;
+    --color-grey: #ffffff;
+    --color-light-grey: #292b2e;
+    --color-grey-50: #ffffff1a;
+    --color-slate-900: #475569;
+    --color-slate-200-55: #56585b8c;
+    --color-grey-5050: #515457;
+    --color-scrollbar-track: #2c2c2c;
+    --color-scrollbar-thumb: #9f9f9f;
+    --color-scrollbar-hover: #d5d7d8;
+    --display-block: block;
+    --color-sec-btn: #25292e;
+    --color-sec-btn-hvr: #363c44;
+    --post-menu-ini-top: #0c1014;
+    --post-menu-init-border-btm: #363636;
+    --post-menu-init-btm: #212328;
+    --post-menu-init-stroke: #ffffff;
+    --post-menu-init-txt: #e2e8f0;
+    --color-edit-acc: #262626;
+    --color-acc-submit-btn: #18208b;
+    --color-edit-acc-fullname: rgb(168, 168, 168);
+  }
+
+  --insta-color: #e1306c;
+  --insta-height: 3px;
+}
+
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme("colors.primary.900");
+    border-right-color: theme("colors.primary.200");
+    animation: rotate 1s infinite linear;
+  }
+
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid theme("colors.primary.200");
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
+
+@layer utilities {
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: var(--color-scrollbar-track);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb);
+    border-radius: 7px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-scrollbar-hover);
+  }
+
+  *::-webkit-scrollbar-button {
+    display: block !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-color: var(--color-scrollbar-track) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
+
+  *::-webkit-scrollbar-button:vertical:decrement:start {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTggNEwyIDExSDE0TDggNFoiIGZpbGw9IiM0NzU1NjkiLz48L3N2Zz4=") !important;
+  }
+
+  *::-webkit-scrollbar-button:vertical:increment:end {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTggMTJMMTQgNUgyTDggMTJaIiBmaWxsPSIjNDc1NTY5Ii8+PC9zdmc+") !important;
+  }
+
+  *::-webkit-scrollbar-button:horizontal:decrement:start {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTQgOEwxMSAxNFYyTDQgOFoiIGZpbGw9IiM0NzU1NjkiLz48L3N2Zz4=") !important;
+  }
+
+  *::-webkit-scrollbar-button:horizontal:increment:end {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTEyIDhMNSAydjEyTDExIDhaIiBmaWxsPSIjNDc1NTY5Ii8+PC9zdmc+") !important;
+  }
+
+  *::-webkit-scrollbar-button:vertical:decrement:end,
+  *::-webkit-scrollbar-button:vertical:increment:start,
+  *::-webkit-scrollbar-button:horizontal:decrement:end,
+  *::-webkit-scrollbar-button:horizontal:increment:start {
+    display: none !important;
+  }
+
+  *::-webkit-scrollbar-button:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+  }
+}
+
+.next-route-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--insta-height);
+  z-index: 30000;
+  pointer-events: none;
+}
+
+.next-route-progress-bar {
+  height: 100%;
+  background: var(--insta-color);
+  width: 100%;
+  transform-origin: left;
+
+  animation: instaTrickle 8s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+.next-route-progress-bar::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 80px;
+  height: 100%;
+  box-shadow:
+    0 0 10px var(--insta-color),
+    0 0 5px var(--insta-color);
+  transform: rotate(3deg) translateY(-4px);
+  opacity: 0.8;
+}
+
+@keyframes instaTrickle {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(0.7);
+  }
+  100% {
+    transform: scaleX(0.95);
+  }
+}
+
+fieldset[disabled] input,
+fieldset[disabled] textarea,
+fieldset[disabled] select,
+fieldset[disabled] button,
+fieldset[disabled] label {
+  cursor: not-allowed;
+  pointer-events: auto;
+}
