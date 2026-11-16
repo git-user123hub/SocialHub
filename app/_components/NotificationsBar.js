@@ -16,6 +16,7 @@ import { createClient } from "../_lib/supabase/client";
 import NotificationsWrapper from "./NotificationsWrapper";
 import { formatDistance } from "date-fns";
 import Spinner from "./Spinner";
+import NoNotifyActivity from "./NoNotifyActivity";
 
 const supabase = createClient();
 
@@ -248,6 +249,7 @@ const NotificationsBar = memo(function NotificationsBar({
     }
   }, []);
 
+  // 1. Filter out the items for the current week
   const curWeekArr =
     sortedArr?.length > 0
       ? sortedArr?.filter((arr) => checkWeek(arr?.created_at) === "7days")
@@ -258,6 +260,30 @@ const NotificationsBar = memo(function NotificationsBar({
     sortedArr?.length > 0
       ? sortedArr?.filter((arr) => checkWeek(arr?.created_at) === "15days")
       : [];
+
+  const totalFollows =
+    sortedArr?.length > 0
+      ? sortedArr?.filter(
+          (arr) => arr?.notification_type === "realTimeFollowers",
+        ).length
+      : 0;
+
+  const totalPostLikes =
+    sortedArr?.length > 0
+      ? sortedArr?.filter(
+          (arr) => arr?.notification_type === "realTimePostLike",
+        ).length
+      : 0;
+
+  const totalComments =
+    sortedArr?.length > 0
+      ? sortedArr?.filter(
+          (arr) =>
+            arr?.notification_type === "realTimeCommented" ||
+            arr?.notification_type === "realTimeCommentLike" ||
+            arr?.notification_type === "realTimeCommentMention",
+        ).length
+      : 0;
 
   return createPortal(
     <div
@@ -335,72 +361,98 @@ const NotificationsBar = memo(function NotificationsBar({
               ) : (
                 <>
                   {sortedArr?.length === 0 ? (
-                    <div className="flex justify-center items-center h-hStretch overflow-hidden">
-                      No notifications yet
-                    </div>
+                    <>
+                      <NoNotifyActivity curFilter="NoNotifications" />
+                    </>
                   ) : (
                     sortedArr?.length > 0 && (
                       <>
-                        <div className="w-full pb-5">
-                          {curWeekArr?.length > 0 && (
-                            <>
-                              {filterBtn === "all" && (
-                                <div
-                                  className={`text-lg font-semibold text-strokeClr mb-4 px-5`}
-                                >
-                                  This week
-                                </div>
-                              )}
+                        {filterBtn === "follows" && totalFollows === 0 && (
+                          <NoNotifyActivity curFilter={filterBtn} />
+                        )}
 
-                              <Suspense fallback={null}>
-                                {curWeekArr?.map((notifyObj) => (
-                                  <NotificationsWrapper
-                                    key={notifyObj.id}
-                                    notifyObj={notifyObj}
-                                    elementRef={handleObserveChild}
-                                    filterBtn={filterBtn}
-                                    setNotificationClicked={
-                                      setNotificationClicked
-                                    }
-                                  />
-                                ))}
-                              </Suspense>
-                            </>
-                          )}
+                        {filterBtn === "postLikes" && totalPostLikes === 0 && (
+                          <NoNotifyActivity curFilter={filterBtn} />
+                        )}
 
-                          {curWeekArr?.length > 0 &&
-                            prevWeekArr?.length > 0 && (
-                              <div className="w-full px-5">
-                                <div className="w-full border-t-[1px] border-t-primaryHvrClr mt-4"></div>
-                              </div>
+                        {filterBtn === "comments" && totalComments === 0 && (
+                          <NoNotifyActivity curFilter={filterBtn} />
+                        )}
+
+                        {(totalFollows > 0 ||
+                          totalPostLikes > 0 ||
+                          totalComments > 0) && (
+                          <div className="w-full pb-5">
+                            {curWeekArr?.length > 0 && (
+                              <>
+                                {filterBtn === "all" && (
+                                  <div
+                                    className={`text-lg font-semibold text-strokeClr mb-4 px-5`}
+                                  >
+                                    This week
+                                  </div>
+                                )}
+
+                                <Suspense fallback={null}>
+                                  {curWeekArr?.map((notifyObj) => (
+                                    <NotificationsWrapper
+                                      key={notifyObj.id}
+                                      notifyObj={notifyObj}
+                                      elementRef={handleObserveChild}
+                                      filterBtn={filterBtn}
+                                      setNotificationClicked={
+                                        setNotificationClicked
+                                      }
+                                      totalFollows={totalFollows}
+                                      totalPostLikes={totalPostLikes}
+                                      totalComments={totalComments}
+                                    />
+                                  ))}
+                                </Suspense>
+                              </>
                             )}
 
-                          {prevWeekArr?.length > 0 && (
-                            <>
-                              {filterBtn === "all" && (
-                                <div
-                                  className={`text-lg font-semibold text-strokeClr mb-4 px-5 ${curWeekArr?.length > 0 ? "mt-4" : ""}`}
-                                >
-                                  This month
-                                </div>
-                              )}
+                            {filterBtn === "all" && (
+                              <>
+                                {curWeekArr?.length > 0 &&
+                                  prevWeekArr?.length > 0 && (
+                                    <div className="w-full px-5">
+                                      <div className="w-full border-t-[1px] border-t-primaryHvrClr mt-4"></div>
+                                    </div>
+                                  )}
+                              </>
+                            )}
 
-                              <Suspense fallback={null}>
-                                {prevWeekArr?.map((notifyObj) => (
-                                  <NotificationsWrapper
-                                    key={notifyObj.id}
-                                    notifyObj={notifyObj}
-                                    elementRef={handleObserveChild}
-                                    filterBtn={filterBtn}
-                                    setNotificationClicked={
-                                      setNotificationClicked
-                                    }
-                                  />
-                                ))}
-                              </Suspense>
-                            </>
-                          )}
-                        </div>
+                            {prevWeekArr?.length > 0 && (
+                              <>
+                                {filterBtn === "all" && (
+                                  <div
+                                    className={`text-lg font-semibold text-strokeClr mb-4 px-5 ${curWeekArr?.length > 0 ? "mt-4" : ""}`}
+                                  >
+                                    This month
+                                  </div>
+                                )}
+
+                                <Suspense fallback={null}>
+                                  {prevWeekArr?.map((notifyObj) => (
+                                    <NotificationsWrapper
+                                      key={notifyObj.id}
+                                      notifyObj={notifyObj}
+                                      elementRef={handleObserveChild}
+                                      filterBtn={filterBtn}
+                                      setNotificationClicked={
+                                        setNotificationClicked
+                                      }
+                                      totalFollows={totalFollows}
+                                      totalPostLikes={totalPostLikes}
+                                      totalComments={totalComments}
+                                    />
+                                  ))}
+                                </Suspense>
+                              </>
+                            )}
+                          </div>
+                        )}
                       </>
                     )
                   )}
@@ -409,9 +461,6 @@ const NotificationsBar = memo(function NotificationsBar({
             </div>
           </div>
 
-          {/* 
-          
-          */}
           <button
             className="absolute right-3 top-3 cursor-pointer"
             ref={closeRef}

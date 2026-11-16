@@ -76,7 +76,7 @@ function SuggestedAccsFollowBtn({ curProfileId, isFollowing, curProUsername }) {
       onClick={isFollowing ? handleUnFollow : handleFollow}
       disabled={isPending}
     >
-      <span className="flex justify-center items-center">
+      <span className="flex justify-center items-center w-12">
         {isPending ? (
           <SpinnerMini />
         ) : (

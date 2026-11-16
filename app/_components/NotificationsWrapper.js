@@ -18,6 +18,9 @@ const NotificationsWrapper = memo(function NotificationsWrapper({
   elementRef,
   filterBtn,
   setNotificationClicked,
+  totalFollows,
+  totalPostLikes,
+  totalComments,
 }) {
   const [userActingProfile, setUserActingProfile] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);

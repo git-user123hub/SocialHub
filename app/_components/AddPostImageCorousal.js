@@ -50,7 +50,7 @@ function AddPostImageCorousal({
 
   return (
     <div
-      className={`flex relative ${expandIt ? "justify-self-start border-r-[1px] border-postIniBdrBtm" : "justify-self-center"} w-[348px] h-[348px] md:w-[398px] md:h-[398px] lg:w-[748px] lg:h-[748px] shrink-0`}
+      className={`flex relative ${expandIt ? "justify-self-start border-r-[1px] border-postIniBdrBtm" : "justify-self-center"} w-[348px] h-[348px] md:w-[398px] md:h-[398px] lg:w-[748px] lg:h-full shrink-0`}
     >
       <div
         className={`w-full h-full flex justify-center items-center relative`}

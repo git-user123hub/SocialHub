@@ -148,7 +148,8 @@ async function Article({ post = {}, loggedInUserId }) {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 h-full flex-shrink-0">
+          {/* <div className="flex items-center gap-3 h-full flex-shrink-0"></div> */}
+          <div className="flex items-center gap-3 h-8 flex-shrink-0">
             {!isPostOwner && !isFollowing && (
               <FollowBtn
                 name={`${isFollowing ? "Following" : "Follow"}`}

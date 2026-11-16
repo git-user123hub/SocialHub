@@ -29,6 +29,7 @@ function EditPostImageCorousal({ imagesArr }) {
   return (
     <div
       className={`flex relative justify-self-start border-r-[1px] border-postIniBdrBtm w-hStretch h-full sm:h-auto`}
+      style={{ width: "-webkit-fill-available" }}
     >
       <div
         className={`w-full h-full flex justify-center items-center relative`}

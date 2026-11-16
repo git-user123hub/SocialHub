@@ -97,6 +97,7 @@ function EditPostMenu({
         id="editModalWindowParentMouseEventsId"
         className={`fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-postIniBtm w-[470px] h-[500px] sm:h-auto sm:w-[757px] md:w-[956px] lg:w-[1025px] max-w-[304px] sm:max-w-[665px] md:max-w-[756px] lg:max-w-[1155px] 2xl:w-[1812px] aspect-[3/2] rounded-3xl flex flex-col items-center overflow-hidden`}
         onClick={(e) => e.stopPropagation()}
+        style={{ maxHeight: "calc(100dvh - 50px)" }}
       >
         <>
           <div className="w-full flex justify-between items-center p-3 border-b-[1px] border-b-postIniBdrBtm z-40 rounded-t-3xl bg-postIniTop">

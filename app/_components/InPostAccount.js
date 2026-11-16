@@ -58,7 +58,7 @@ async function InPostAccount({
           </div>
         </Link>
 
-        <div className="flex items-center gap-3 h-full flex-shrink-0">
+        <div className="flex items-center gap-3 h-8 flex-shrink-0">
           {!isPostOwner && (
             <div className="min-[767px]:max-[1024px]:hidden">
               <FollowBtn

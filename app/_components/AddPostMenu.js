@@ -443,7 +443,7 @@ function AddPostMenu({ onSetOpen, listenCapturing = true, setCreateClicked }) {
                         {openGallery && (
                           <div
                             ref={galleryRef}
-                            className="absolute bottom-12 right-3 bg-[#3e404480] rounded-md w-auto h-max min-w-20 text-strokeClr flex p-3"
+                            className="absolute bottom-10 right-3 bg-[#3e404480] rounded-md w-auto h-max min-w-20 text-strokeClr flex p-3"
                           >
                             <div
                               className="flex gap-3 max-w-[200px] sm:max-w-[300px] overflow-x-scroll"
