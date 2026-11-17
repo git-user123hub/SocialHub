@@ -11,8 +11,8 @@ function CommentHalfInteractiveSection({
   userProfile,
   loggedInUserId,
   username,
-  show3Dots,
-  setShow3Dots,
+  // show3Dots,
+  // setShow3Dots,
 }) {
   const [isMiniModalOpened, setIsMiniModalOpened] = useState(false);
 
@@ -30,16 +30,16 @@ function CommentHalfInteractiveSection({
           username={username}
           commentOwnerId={userProfile.id}
         />
-        {show3Dots && (
-          <>
-            {comment.commented_by === loggedInUserId && (
-              <MiniMoreOptsBtn
-                setIsMiniModalOpened={setIsMiniModalOpened}
-                setShow3Dots={setShow3Dots}
-              />
-            )}
-          </>
+        {/* {show3Dots && (
+          <> */}
+        {comment.commented_by === loggedInUserId && (
+          <MiniMoreOptsBtn
+            setIsMiniModalOpened={setIsMiniModalOpened}
+            // setShow3Dots={setShow3Dots}
+          />
         )}
+        {/* </>
+        )} */}
       </div>
 
       {comment.commented_by === loggedInUserId && (

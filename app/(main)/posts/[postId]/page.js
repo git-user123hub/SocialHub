@@ -56,7 +56,7 @@ export default async function PostPage({ params: { postId } }) {
 
   return (
     <div
-      className={`w-full sm:w-[90%] md:max-w-[995px] lg:max-w-[1551px] mt-0 ${user?.id === userProfile?.id || numOfPosts < 1 ? "mb-36 md:mb-auto" : ""} ${user?.id !== userProfile?.id || !(numOfPosts < 1) ? "mb-36 md:mb-auto" : ""}`}
+      className={`w-full sm:w-[90%] md:min-w-[900px] md:ml-7 md:max-w-[995px] lg:max-w-[1551px] mt-0 ${user?.id === userProfile?.id || numOfPosts < 1 ? "mb-36 md:mb-auto" : ""} ${user?.id !== userProfile?.id || !(numOfPosts < 1) ? "mb-36 md:mb-auto" : ""}`}
     >
       <div className="w-full h-full flex flex-col items-center px-0 md:px-5 md:pt-5 pb-2">
         <div className="relative md:static w-full h-[660px] md:h-full lg:h-[60dvh] xl:h-[95dvh] flex justify-center items-center md:min-h-[75dvh]">

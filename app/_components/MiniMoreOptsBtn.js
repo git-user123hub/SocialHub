@@ -2,10 +2,13 @@
 
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 
-function MiniMoreOptsBtn({ setIsMiniModalOpened, setShow3Dots }) {
+function MiniMoreOptsBtn({
+  setIsMiniModalOpened,
+  //  setShow3Dots
+}) {
   function handleClick(e) {
     setIsMiniModalOpened(true);
-    setShow3Dots(false);
+    // setShow3Dots(false);
   }
 
   return (

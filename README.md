@@ -37,6 +37,12 @@ A full-stack social media application inspired by Instagram, built with **Next.j
 - **Instant Search & Live Counter:** Real-time search-as-you-type filtering that dynamically updates matching results alongside a live result count.
 - **Engagement Features:** Interactive post likes, comment likes, nested comments, user follow/unfollow, and post save/unsave functionality.
 
+### Comments System
+
+- **Infinite Recursive Comments:** Built an unlimited parent-child comment tree on the server from a flat Supabase table using a recursive function that calculated dynamic pixel indentation by reply depth, then rendered the thread recursively in the UI with indentation capped at three levels deep to prevent horizontal scrolling.
+
+- **Contextual Focus Interception:** Built an Instagram-style response anchor where hitting "Reply" automatically snaps browser focus down to the input field, pre-populating an active `@username` tag targeting the parent comment node.
+
 ### Notifications System
 
 - **Real-Time Activity Alerts:** Notifies users of new post likes, comment likes, comments, and followers.

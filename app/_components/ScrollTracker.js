@@ -61,6 +61,8 @@ export default function ScrollTracker({ currentLimit }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [currentLimit, router, pathname, totalPosts]);
 
+  if (currentLimit === totalPosts || currentLimit > totalPosts) return null;
+
   return (
     <div
       className={`${isLoading ? "flex" : "hidden"} mb-20 h-max items-center justify-center`}

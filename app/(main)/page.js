@@ -5,10 +5,10 @@ import Article from "@/app/_components/Article";
 import SuggestionsBar from "@/app/_components/SuggestionsBar";
 import { getProfile, serverDB } from "../_lib/inServer-services";
 import { Suspense } from "react";
-import ScrollTracker from "../_components/ScrollTracker";
 import { redirect } from "next/navigation";
 import Loading from "./loading";
 import Spinner from "../_components/Spinner";
+import ScrollTrackerWrapper from "../_components/ScrollTrackerWrapper";
 
 export default async function Home({ searchParams }) {
   const supabase = serverDB();
@@ -48,9 +48,8 @@ export default async function Home({ searchParams }) {
               ))}
             </Suspense>
           </div>
-          {!(
-            posts?.length < currentLimit && posts?.length > currentLimit - 5
-          ) && <ScrollTracker currentLimit={currentLimit} />}
+
+          <ScrollTrackerWrapper currentLimit={currentLimit} />
         </div>
 
         <div className="hidden min-[1080px]:block">
@@ -63,9 +62,6 @@ export default async function Home({ searchParams }) {
             </Suspense>
           </div>
         </div>
-        {/*
-
-        */}
       </div>
     </>
   );

@@ -20,7 +20,7 @@ function CommentMainSection({
   postId,
   isLiked,
 }) {
-  const [show3Dots, setShow3Dots] = useState(false);
+  // const [show3Dots, setShow3Dots] = useState(false);
   const [optimisticIsLiked, optimisticLike] = useOptimistic(
     isLiked,
     (curIsLiked) => {
@@ -44,13 +44,13 @@ function CommentMainSection({
     },
   );
 
-  function handleHoverEnter(e) {
-    setShow3Dots(true);
-  }
+  // function handleHoverEnter(e) {
+  //   setShow3Dots(true);
+  // }
 
-  function handleHoverLeave(e) {
-    setShow3Dots(false);
-  }
+  // function handleHoverLeave(e) {
+  //   setShow3Dots(false);
+  // }
 
   async function handleCmntLike(likeObj) {
     optimisticLike(likeObj);
@@ -62,8 +62,8 @@ function CommentMainSection({
     <>
       <div
         className={`flex gap-3 w-full mb-4`}
-        onMouseEnter={handleHoverEnter}
-        onMouseLeave={handleHoverLeave}
+        // onMouseEnter={handleHoverEnter}
+        // onMouseLeave={handleHoverLeave}
       >
         <Link href={`/user/${id}`} className="w-max shrink-0">
           <div className="w-[32px] h-[32px] rounded-full relative flex justify-center items-center overflow-hidden bg-[#d4d4d4]">
@@ -106,8 +106,8 @@ function CommentMainSection({
               userProfile={userProfile}
               LikesCount={optimisticLikesCount}
               username={username}
-              show3Dots={show3Dots}
-              setShow3Dots={setShow3Dots}
+              // show3Dots={show3Dots}
+              // setShow3Dots={setShow3Dots}
             />
           </div>
 
